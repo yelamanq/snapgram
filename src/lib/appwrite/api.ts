@@ -1,7 +1,6 @@
 import { INewUser } from "@/types";
 import { ID, Query } from "appwrite";
 import { account, appwriteConfig, avatars, databases } from "./config";
-import { URL } from "url";
 
 export async function createUserAccount(user: INewUser) {
   try {
@@ -75,10 +74,9 @@ export async function getCurrentUser() {
       [Query.equal("accountId", currentAccount.$id)]
     );
 
-    if (!currentUser) throw Error;
-
+    if (!currentUser) throw "Error";
     return currentUser.documents[0];
   } catch (error) {
-    console.log(error);
+    console.log("error");
   }
 }
